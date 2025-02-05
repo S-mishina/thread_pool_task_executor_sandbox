@@ -1,22 +1,20 @@
 package app.sandbox.sandbox_app.Controller;
 
-import java.net.http.HttpHeaders;
 import java.util.List;
-
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import app.sandbox.sandbox_app.Utils;
+import app.sandbox.sandbox_app.Util.ExecuteParallel;
 
 @RestController
 public class Controller {
   @GetMapping("/")
-  public String index(@RequestHeader HttpHeaders headers) {
-    List<String> testAppHeader = headers.get("test-app");
+  public String index(@RequestHeader(value = "test-app", required = false) String testAppHeader) {
     int parallelRequests = 1;
-    if (testAppHeader != null && !testAppHeader.isEmpty()) {
+    if (testAppHeader != null) {
       try {
-        int value = Integer.parseInt(testAppHeader.get(0));
+        int value = Integer.parseInt(testAppHeader);
         if (value > 0) {
           parallelRequests = value;
         }
@@ -24,6 +22,6 @@ public class Controller {
         parallelRequests = 1;
       }
     }
-    return Utils.ExecuteParallelHttpRequest(parallelRequests);
+    return String.join(", ", ExecuteParallel.ExecuteParallelHttpRequest(parallelRequests));
   }
 }
