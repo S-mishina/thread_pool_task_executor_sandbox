@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ExecuteParallel {
+  private ThreadPoolTaskExecutor taskExecutor;
 
   public static List<String> ExecuteParallelHttpRequest(int parallelCount) {
     String url = System.getenv("TEST_ENDPOINT");
