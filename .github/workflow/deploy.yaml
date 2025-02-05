@@ -1,0 +1,41 @@
+
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    permissions:
+      packages: write
+      contents: read
+      attestations: write
+      id-token: write
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3.3.0
+        with:
+          driver-opts: |
+            image=moby/buildkit:v0.10.6
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          logout: false
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: |
+            ghcr.io/s-mishina/thread_pool_task_executor_sandbox:${{ github.sha }}
+            ghcr.io/s-mishina/thread_pool_task_executor_sandbox:latest
