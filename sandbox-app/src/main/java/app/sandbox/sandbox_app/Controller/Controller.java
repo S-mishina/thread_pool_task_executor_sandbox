@@ -9,6 +9,9 @@ import app.sandbox.sandbox_app.Util.ExecuteParallel;
 
 @RestController
 public class Controller {
+  @Autowired
+  private ExecuteParallel executeParallel;
+
   @GetMapping("/")
   public String index(@RequestHeader(value = "test-app", required = false) String testAppHeader) {
     int parallelRequests = 1;
@@ -22,6 +25,6 @@ public class Controller {
         parallelRequests = 1;
       }
     }
-    return String.join(", ", ExecuteParallel.ExecuteParallelHttpRequest(parallelRequests));
+    return String.join(", ", executeParallel.ExecuteParallelHttpRequest(parallelRequests));
   }
 }
