@@ -176,6 +176,8 @@ Reference images are shown below.
 
 Note that this image shows the number of threads that can be handled at the same time, not the number of requests, since the number of parallels is 10 even if it exceeds 10.
 
+In the case of single request verification, `maxPoolSize` is usually not expected to be exceeded. Because `maxPoolSize` will not be exceeded unless an excessive number of parallel requests are made, and even if it is exceeded, it will be absorbed by `queueCapacity`, so it is necessary to note that it cannot be noticed during verification.
+
 ### corePoolSize
 
 TBU
