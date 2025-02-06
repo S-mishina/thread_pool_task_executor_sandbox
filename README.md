@@ -166,6 +166,16 @@ apm
 
 ![maxPoolSize:11](image/sample11.png)
 
+***Summary***
+
+It is often assumed that this parameter will throw an error if the requested number of parallels is exceeded, but this is not the case.
+However, this is not the case. This parameter works in combination with `queueCapacity`.
+
+Reference images are shown below.
+
+![init metric](image/metric1.png)
+
+Note that this image shows the number of threads that can be handled at the same time, not the number of requests, since the number of parallels is 10 even if it exceeds 10.
 
 ### corePoolSize
 
