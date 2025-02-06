@@ -169,7 +169,6 @@ apm
 ***Summary***
 
 It is often assumed that this parameter will throw an error if the requested number of parallels is exceeded, but this is not the case.
-However, this is not the case. This parameter works in combination with `queueCapacity`.
 
 Reference images are shown below.
 
