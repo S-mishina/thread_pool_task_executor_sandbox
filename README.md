@@ -24,7 +24,7 @@ TBU
 
 TBU
 
-## Verification of each parameter
+## Verification of each parameter(For a single request)
 
 ### maxPoolSize
 
