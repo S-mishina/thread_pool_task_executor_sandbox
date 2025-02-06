@@ -13,9 +13,9 @@ public class TaskExecutorConfiguration {
   private final int queueCapacity;
 
   public TaskExecutorConfiguration(
-      @Value("${threadpool.max-size:5}") int maxPoolSize,
-      @Value("${threadpool.core-size:3}") int corePoolSize,
-      @Value("${threadpool.queue-capacity:10}") int queueCapacity) {
+      @Value("${THREADPOOL_MAX_SIZE:5}") int maxPoolSize,
+      @Value("${THREADPOOL_CORE_SIZE:3}") int corePoolSize,
+      @Value("${THREADPOOL_QUEUE_CAPACITY:10}") int queueCapacity) {
     this.maxPoolSize = maxPoolSize;
     this.corePoolSize = corePoolSize;
     this.queueCapacity = queueCapacity;
