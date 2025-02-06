@@ -80,7 +80,7 @@ root@sandbox-app2-784969bc79-49xjg:/# curl http://sandbox-app3.sample-app:8080 -
 
 apm
 
-![maxPoolSize:4]()
+![maxPoolSize:4](image/sample4.png)
 
 ***maxPoolSize:5***
 
@@ -92,7 +92,7 @@ root@sandbox-app2-784969bc79-49xjg:/# curl http://sandbox-app3.sample-app:8080 -
 
 apm
 
-![maxPoolSize:5]()
+![maxPoolSize:5](image/sample5.png)
 
 ***maxPoolSize:6***
 
@@ -104,7 +104,7 @@ root@sandbox-app2-784969bc79-49xjg:/# curl http://sandbox-app3.sample-app:8080 -
 
 apm
 
-![maxPoolSize:6]()
+![maxPoolSize:6](image/sample6.png)
 
 ***maxPoolSize:7***
 
