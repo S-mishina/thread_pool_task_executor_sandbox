@@ -168,15 +168,17 @@ apm
 
 ***Summary***
 
-It is often assumed that this parameter will throw an error if the requested number of parallels is exceeded, but this is not the case.
+It is often assumed that `maxPoolSize` will throw an error if the number of parallel requests exceeds its value, but this is not the case. Instead, excess tasks are placed in the queue (`queueCapacity`), and an error only occurs if the queue also reaches its limit.
 
 Reference images are shown below.
 
 ![init metric](image/metric1.png)
 
-Note that this image shows the number of threads that can be handled at the same time, not the number of requests, since the number of parallels is 10 even if it exceeds 10.
+This image represents the number of threads that can be processed simultaneously, not the number of incoming requests. Even if more than 10 requests arrive, only 10 threads will be executing at the same time, while the remaining requests wait in the queue.
 
-In the case of single request verification, `maxPoolSize` is usually not expected to be exceeded. Because `maxPoolSize` will not be exceeded unless an excessive number of parallel requests are made, and even if it is exceeded, it will be absorbed by `queueCapacity`, so it is necessary to note that it cannot be noticed during verification.
+In the case of single request verification, `maxPoolSize` is usually not exceeded. This is because, unless a large number of parallel requests are made, the pool does not need to expand beyond `corePoolSize`, and excess tasks are handled by `queueCapacity`. As a result, `maxPoolSize` may not have a noticeable effect unless a high level of concurrency is tested.
+
+The point to remember is that `maxPoolSize` defines the upper limit of dynamically created threads, but it does not enforce a strict constraint on the number of requests being processed. If you want to impose a strict limit, you need to implement additional controls yourself. By default, an error (RejectedExecutionException) occurs when `queueCapacity` is exceeded, as it determines whether additional tasks can be accepted.
 
 ### corePoolSize
 
