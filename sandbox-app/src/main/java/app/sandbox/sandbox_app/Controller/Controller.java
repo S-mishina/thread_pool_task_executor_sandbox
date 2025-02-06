@@ -27,9 +27,9 @@ public class Controller {
       }
 
       executeParallel.executeParallelHttpRequest(parallelRequests);
-      return "Accessed Yahoo!";
+      return "parallel request" + "threads:" + parallelRequests;
     } else {
-      return "Hello World!";
+      return "Bad parallel request";
     }
   }
 }

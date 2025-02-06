@@ -11,13 +11,12 @@ import org.springframework.stereotype.Service;
 public class ExecuteParallel {
   private final ThreadPoolTaskExecutor asyncTaskExecutor;
 
-  // コンストラクタでasyncTaskExecutorを初期化
   public ExecuteParallel(ThreadPoolTaskExecutor asyncTaskExecutor) {
     this.asyncTaskExecutor = asyncTaskExecutor;
   }
 
   public List<String> executeParallelHttpRequest(int parallelCount) {
-    String url = "https://yahoo.jp/";
+    String url = System.getenv("TEST_ENDPOINT");
     if (url == null) {
       return List.of("TEST_ENDPOINT environment variable is not set");
     } else {
