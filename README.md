@@ -140,7 +140,7 @@ root@sandbox-app2-784969bc79-49xjg:/# curl http://sandbox-app3.sample-app:8080 -
 
 apm
 
-![maxPoolSize:9]()
+![maxPoolSize:9](image/sample9.png)
 
 ***maxPoolSize:10***
 
@@ -152,7 +152,20 @@ root@sandbox-app2-784969bc79-49xjg:/# curl http://sandbox-app3.sample-app:8080 -
 
 apm
 
-![maxPoolSize:10]()
+![maxPoolSize:10](image/sample10.png)
+
+***maxPoolSize:11***
+
+sample curl
+
+```:bash
+root@sandbox-app2-784969bc79-49xjg:/# curl http://sandbox-app3.sample-app:8080 -H test-app:11
+```
+
+apm
+
+![maxPoolSize:11](image/sample11.png)
+
 
 ### corePoolSize
 
