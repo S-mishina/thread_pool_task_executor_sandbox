@@ -18,7 +18,7 @@ public class Controller {
   @GetMapping("/")
   public String index(@RequestHeader(value = "test-app", required = false) String testAppHeader) {
     int parallelRequests = 1;
-
+    System.out.println("testAppHeader: " + testAppHeader);
     if (testAppHeader != null) {
       try {
         parallelRequests = Integer.parseInt(testAppHeader);
