@@ -1,4 +1,4 @@
-FROM openjdk:23 as builder
+FROM openjdk:25 as builder
 COPY . .
 RUN ./mvnw clean package
 FROM eclipse-temurin:23-jre as executor
