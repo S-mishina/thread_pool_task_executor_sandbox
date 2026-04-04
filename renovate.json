@@ -1,6 +1,34 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":separateMajorReleases",
+    ":combinePatchMinorReleases",
+    "group:monorepo:java"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^pom\.xml$"],
+      "matchStrings": ["<java\.version>(?<currentValue>\d+)</java\.version>"],
+      "depNameTemplate": "eclipse-temurin",
+      "datasourceTemplate": "docker",
+      "lookupNameTemplate": "eclipse-temurin"
+    },
+    {
+      "customType": "regex",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": ["FROM eclipse-temurin:(?<currentValue>\d+)-(?:jdk|jre)"],
+      "depNameTemplate": "eclipse-temurin",
+      "datasourceTemplate": "docker",
+      "lookupNameTemplate": "eclipse-temurin"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": ["eclipse-temurin"],
+      "groupName": "java-runtime",
+      "versioning": "docker"
+    }
   ]
 }
