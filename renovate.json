@@ -9,8 +9,8 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^pom\.xml$"],
-      "matchStrings": ["<java\.version>(?<currentValue>\d+)</java\.version>"],
+      "fileMatch": ["^pom\\.xml$"],
+      "matchStrings": ["<java\\.version>(?<currentValue>\\d+)</java\\.version>"],
       "depNameTemplate": "eclipse-temurin",
       "datasourceTemplate": "docker",
       "lookupNameTemplate": "eclipse-temurin"
@@ -18,7 +18,7 @@
     {
       "customType": "regex",
       "fileMatch": ["^Dockerfile$"],
-      "matchStrings": ["FROM eclipse-temurin:(?<currentValue>\d+)-(?:jdk|jre)"],
+      "matchStrings": ["FROM eclipse-temurin:(?<currentValue>\\d+)-(?:jdk|jre)"],
       "depNameTemplate": "eclipse-temurin",
       "datasourceTemplate": "docker",
       "lookupNameTemplate": "eclipse-temurin"
